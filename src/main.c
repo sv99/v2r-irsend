@@ -5,7 +5,14 @@
 #include <string.h>
 
 #define PULSE_BUFFER_SIZE       256
+
+#if defined(__arm__) || defined(__TARGET_ARCH_ARM)
+/* v2r davinchi arm platform */
 #define IRSEND_DEVICE           "/dev/v2r_irsend"
+#else
+/* osx test platform */
+#define IRSEND_DEVICE           "v2r_irsend.txt"
+#endif
 
 unsigned int  pulse_array[PULSE_BUFFER_SIZE];
 //= {
@@ -55,7 +62,7 @@ main(int argc, char *argv[]) {
                 return 1;
         }
         else {
-                if ( strcmp(argv[1], "-c") ) {
+                if ( !strcmp(argv[1], "-c") ) {
                         repeat = atoi(argv[2]);
                         first = 3;
                 }
