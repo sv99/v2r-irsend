@@ -23,6 +23,8 @@ void send_array (unsigned int * array) {
         int devfile = -1;
         size_t req_sz = 0;
         //считаем длинну массива
+        printf( "send_array start\n" );
+
         for (int i = 0; array[i]!=0; i++) {
                 printf( "%i: %i\n", i, array[i] );
                 req_sz++;
@@ -63,6 +65,7 @@ main(int argc, char *argv[]) {
                 }
                 printf( "repeate: %i first: %i len: %i\n", repeat, first, pulse_pos);
                 pulse_array[pulse_pos] = 0;
+                printf( "len: %i\n", pulse_pos);
                 send_array((unsigned int*)&pulse_array);
         }
 
