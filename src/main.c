@@ -22,9 +22,9 @@ unsigned int  pulse_array[PULSE_BUFFER_SIZE];
 void send_array (unsigned int * array) {
         int devfile = -1;
         size_t req_sz = 0;
-        int i;
         //считаем длинну массива
-        for (i=0; array[i]!=0; i++) {
+        for (int i = 0; array[i]!=0; i++) {
+                printf( "%i: %i\n", i, array[i] );
                 req_sz++;
         }
         req_sz++;
@@ -63,7 +63,7 @@ main(int argc, char *argv[]) {
                 }
                 printf( "repeate: %i first: %i len: %i\n", repeat, first, pulse_pos);
                 pulse_array[pulse_pos] = 0;
-                send_array(pulse_array);
+                send_array((unsigned int*)&pulse_array);
         }
 
         return 0;
