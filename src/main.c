@@ -3,7 +3,7 @@
 #include <sys/fcntl.h>
 #include <unistd.h>
 #include <string.h>
-#include <time.h>
+#include <sys/time.h>
 
 #define PULSE_BUFFER_SIZE       256
 #define REPEAT_TIMEOUT_MSEC     100
